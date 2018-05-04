@@ -9,6 +9,7 @@ football_league_tables = ['http://www.skysports.com/premier-league-table', 'http
 teams = [];
 page = Nokogiri::HTML(HTTParty.get('http://www.skysports.com/league-1-table'));
 team_categories = page.xpath("//thead").text.split("\n").reject(&:empty?);
+
 binding.pry
 
 CSV.open("league1.csv", "a+"){|csv| csv << table}
